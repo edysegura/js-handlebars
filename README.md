@@ -1,6 +1,8 @@
 # Semantic Templates with Handlebars
 
-A simple example using handlebars templates
+A simple example using handlebars templates.
+
+[Live demo](https://edysegura.github.io/js-handlebars)
 
 ## References
 
