@@ -9,8 +9,32 @@
 <body>
 
 <h1>Handlebars Example</h1>
+<div id="peoples">Loading...</div>
 
+<script type="text/x-handlebars-template" id="person-template">
+    {{#each people}}
+    <dl>
+        <dt><strong>Name:</strong> {{name}}</dt>
+        <dd><strong>Last name:</strong> {{lastName}}</dd>
+    </dl>
+    {{/each}}
+</script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script>
+    function renderPeople(data) {
+        console.log(data)
+        const peoples = document.getElementById('peoples')
+        const stringTemplate = document.getElementById('person-template').innerHTML
+        const compiledTemplate = Handlebars.compile(stringTemplate)
+        const html = compiledTemplate({ people: data })
+        peoples.innerHTML = html
+    }
+
+    fetch('data.json')
+    .then(response => response.json())
+    .then(renderPeople)
+</script>
 
 </body>
 </html>
